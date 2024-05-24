@@ -26,3 +26,5 @@ class Bowling
 #   end
 #     puts@game.total_score==20
   
+# bowling_spec.rb
+
