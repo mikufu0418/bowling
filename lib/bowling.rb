@@ -206,13 +206,17 @@ class Bowling
     @scores = []
     # 一時保存用の配列
     @temp = []
+    # フレームごとの合計を格納する配列
+    @frame_score = []
   end
-
-  # スコアの合計を返す
+ # スコアの合計を返す
   def total_score
     @total_score
   end
-
+# 指定したフレームの時点でのスコア合計を返す
+def frame_score(frame)
+  @frame_score[frame - 1]
+end
   # スコアを追加する
   def add_score(pins)
     # 一時保存用のスコアに、倒したピンの数を追加する
@@ -235,6 +239,8 @@ def calc_score
     else
       @total_score += score.inject(:+)
     end
+    # 合計をフレームごとに記録しておく
+    @frame_score << @total_score
   end
 end
 private
@@ -258,14 +264,14 @@ def strike?(score)
   score.first == 10
 end
 
-  # ストライクボーナスを含んだ値でスコアを計算する
-  def calc_strike_bonus(index)
+ # ストライクボーナスを含んだ値でスコアを計算する
+ def calc_strike_bonus(index)
     # 次のフレームもストライクで、なおかつ最終フレーム以外なら
     # もう一つ次のフレームの一投目をボーナスの対象にする
-    if strike?(@scores[index]) && not_last_frame?(index + 1)
+   if strike?(@scores[index]) && not_last_frame?(index + 1)
       20 + @scores[index + 1].first
-    else
+   else
       10 + @scores[index].inject(:+)
-    end
+   end
   end
 end
