@@ -1,4 +1,4 @@
-# bowling.rb
+
 # bowling.rb
 
 # # ボウリングのスコアを管理するクラス
