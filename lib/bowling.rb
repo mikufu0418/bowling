@@ -213,10 +213,10 @@ class Bowling
   def total_score
     @total_score
   end
-# 指定したフレームの時点でのスコア合計を返す
-def frame_score(frame)
+ # 指定したフレームの時点でのスコア合計を返す
+  def frame_score(frame)
   @frame_score[frame - 1]
-end
+  end
   # スコアを追加する
   def add_score(pins)
     # 一時保存用のスコアに、倒したピンの数を追加する
